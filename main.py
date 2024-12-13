@@ -30,7 +30,6 @@ data_1000000_file.close()
 result_file = open("result.txt", "w")
 result = ""
 
-
 insert_start_100_time = timeit.timeit(lambda: tests.test_insert_start(data_100), number=10)
 insert_end_100_time = timeit.timeit(lambda: tests.test_insert_end(data_100), number=10)
 
@@ -51,6 +50,11 @@ insert_end_1000000_time = timeit.timeit(lambda: tests.test_insert_end(data_10000
 result += f"\nAverage time to populate 1000000 elements into linked list inserting at the start: {insert_start_1000000_time / 10 * 1000:.4f} ms\n"
 result += f"Average time to populate 1000000 elements into linked list inserting at the end: {insert_end_1000000_time / 10 * 1000:.4f} ms\n"
 
+print_100_time = timeit.timeit(lambda: tests.test_print_nodes(LinkedList(data_100)), number=10)
+print_10000_time = timeit.timeit(lambda: tests.test_print_nodes(LinkedList(data_10000)), number=10)
+
+result += f"\nAverage time to print 100 element linked list as string: {print_100_time / 10 * 1000:.4f} ms\n"
+result += f"Average time to print 10000 element linked list as string: {print_10000_time / 10 * 1000:.4f} ms\n"
 
 list_100 = LinkedList(data_100)
 find_start_node_100_time = timeit.timeit(lambda: tests.test_find_node(list_100, 0), number=10)
